@@ -1,0 +1,17 @@
+- @users.each do |user| 
+  table
+    tr
+      th Name
+      th Email
+      th Actions
+    tr
+      td  
+        = user.name
+      td
+        = user.email
+      td
+        = link_to "Add Friend", users_path(user), method: :post
+
+
+a href="/"
+  | Home
