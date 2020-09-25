@@ -1,16 +1,19 @@
+= render 'layouts/navigation'
+
 - @users.each do |user| 
   table
-    tr
-      th Name
-      th Email
-      th Actions
-    tr
-      td  
-        = user.name
-      td
-        = user.email
-      td
-        = link_to "Add Friend", users_path(user), method: :post
+    - if user != current_user
+      tr
+        th Name
+        th Email
+        th Actions
+        tr
+          td  
+            = user.name
+          td
+            = user.email
+          td
+            = link_to "Add Friend", request_friend_path(user: current_user, friend: user.id), method: :post
 
 
 a href="/"

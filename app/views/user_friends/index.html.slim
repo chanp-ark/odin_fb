@@ -1,0 +1,22 @@
+h1 This is the User Friend Index Page
+
+= render 'layouts/navigation'
+
+h1 Friend List
+- if @user_friends
+  ul
+    - @user_friends.each do |user_friend|
+      li
+        = user_friend.friend.name
+        = button_to("Delete", user_friend_path(user_friend), method: :delete)
+
+h1 Friend Requests
+- if @friend_requests
+  ul
+    - @friend_requests.each do |request|
+      - if request.can_accept_request?(current_user)
+        li
+          div
+            = request.friend.name
+            = button_to("Accept", user_friend_path(request), method: :put)   
+            = button_to("Deny", user_friend_path(request), method: :delete)

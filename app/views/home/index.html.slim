@@ -1,11 +1,3 @@
 h1 Welcome to Wannabe Facebook #{current_user.name}
 
-nav
-  div
-    ul
-      li
-        a href='/users' All Users
-      li
-        a href='/posts' Timeline
-      li
-        = link_to("logout", destroy_user_session_path, method: :delete)
+= render 'layouts/navigation'
