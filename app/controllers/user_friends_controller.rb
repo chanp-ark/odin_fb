@@ -3,7 +3,6 @@ class UserFriendsController < ApplicationController
   def index
     @user_friends = UserFriend.find_friends(current_user)
     @friend_requests = UserFriend.where(friend: current_user)
-
   end
 
   def request_friend

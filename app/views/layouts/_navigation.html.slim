@@ -2,6 +2,8 @@ nav
   div
     ul
       li
+        = link_to("home", root_path, method: :get)
+      li
         = link_to("all users", users_path, method: :get)
       li
         = link_to("timeline", posts_path, method: :get)
