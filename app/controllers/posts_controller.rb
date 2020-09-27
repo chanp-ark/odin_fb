@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.where(user_id: [current_user.id, current_user.user_friends.pluck(:friend_id)])
   end
 
   # GET /posts/1
@@ -19,12 +19,14 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @post = Post.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.likes_count = 0
 
     respond_to do |format|
       if @post.save
