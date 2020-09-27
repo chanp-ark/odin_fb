@@ -9,16 +9,18 @@ table
       th Actions
       th colspan="4"
   - @posts.each do |post|
-      tbody
-        div 
-          td
-            = post.username
-          td
-            = post.body
-          td
-            = post.likes_count
-          td
-            = link_to 'Show', post
+    - p '*********'
+    - p post
+    tbody
+      div 
+        td
+          = post.username
+        td
+          = post.body
+        td
+          = link_to "#{post.likes_count}", like_post_path(id: post.id), method: :put
+        td
+          = link_to 'Show', post
 br
 
 = link_to 'New Post', new_post_path

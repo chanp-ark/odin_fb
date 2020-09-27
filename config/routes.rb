@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   get 'user_friend', to: 'user_friend#index'
   post 'request_friend', to: 'user_friends#request_friend'
+  put 'like_post', to: 'posts#like_post'
   root to: 'home#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

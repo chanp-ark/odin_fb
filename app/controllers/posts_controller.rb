@@ -22,6 +22,15 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def like_post
+    post = Post.find(params[:id])
+    if post.increment!(:likes_count)
+      flash[:notice] = "You liked the post!"
+    else
+      flash[:alert] = "There was something wrong liking the post"
+    end
+  end
+
   # POST /posts
   # POST /posts.json
   def create
