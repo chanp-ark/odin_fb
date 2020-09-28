@@ -12,14 +12,9 @@ p
 p
   strong
     | Likes count:
-  = @post.likes_count
+  = link_to "#{@post.likes_count}", like_post_path(id: @post.id), method: :put
 
-p
-  strong
-    | Reposts count:
-  = @post.reposts_count
+= render partial: "comments/comments", locals: {commentable: @post}
+= render partial: "comments/form", locals: {commentable: @post}
 
-= link_to 'Edit', edit_post_path(@post) 
-|  | 
-=  link_to 'Destroy', delete_post_path, method: :delete, data: {confirm: 'Are you sure?'}
 = link_to 'Back', posts_path

@@ -8,11 +8,9 @@ table
       th Likes
       th Actions
       th colspan="4"
-  - @posts.each do |post|
-    - p '*********'
-    - p post
-    tbody
-      div 
+  tbody
+    - @posts.each do |post|
+      tr 
         td
           = post.username
         td
@@ -21,6 +19,8 @@ table
           = link_to "#{post.likes_count}", like_post_path(id: post.id), method: :put
         td
           = link_to 'Show', post
-br
+    
+
+
 
 = link_to 'New Post', new_post_path
