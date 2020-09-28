@@ -5,7 +5,6 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :body
       t.integer :likes_count
       t.integer :reposts_count
-
       t.timestamps
     end
   end
