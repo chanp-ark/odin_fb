@@ -1,18 +1,17 @@
 - @users.each do |user| 
   table
-    - if user != current_user
+    tr
+      th Name
+      th Email
+      th Actions
       tr
-        th Name
-        th Email
-        th Actions
-        tr
-          td  
-            = user.name
-          td
-            = user.email
-          td
+        td  
+          = user.name
+        td
+          = user.email
+        td
+          - unless current_user.user_friends.pluck(:friend_id).include?(user.id)
             = link_to "Add Friend", request_friend_path(user: current_user, friend: user.id), method: :post
-
 
 a href="/"
   | Home

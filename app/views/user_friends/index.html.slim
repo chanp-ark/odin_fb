@@ -5,7 +5,7 @@ h1 Friend List
   ul
     - @user_friends.each do |user_friend|
       li
-        = user_friend.friend.name
+        = user_friend.user.name
         = button_to("Delete", user_friend_path(user_friend), method: :delete)
 
 h1 Friend Requests
@@ -13,8 +13,8 @@ h1 Friend Requests
   ul
     - @friend_requests.each do |request|
       - if request.can_accept_request?(current_user)
-        li
-          div
-            = request.friend.name
-            = button_to("Accept", user_friend_path(request), method: :put)   
-            = button_to("Deny", user_friend_path(request), method: :delete)
+          li
+            div
+              = request.user.name
+              = button_to("Accept", user_friend_path(request), method: :put)   
+              = button_to("Deny", user_friend_path(request), method: :delete)
